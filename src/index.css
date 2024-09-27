@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", system-ui;
+  background-color: #F4F6FA;
+}
+
+
+
+#progress{
+  background: white;
+  border: 4px solid white;
+  border-radius: 999px;
+  height: 16px;
+}
+
+#progress::-webkit-progress-bar {
+  background-color: white; /* Color del fondo */
+  border-radius: 999px; /* Bordes redondeados */
+}
+
+progress::-webkit-progress-value {
+  background-color: #A729F5; /* Color del relleno */
+  border-radius: 999px; /* Bordes redondeados */
+}
+
+.option:checked + span{
+  background-color: #A729F5;
+  color: white;
+}
+
+.option:checked + span{
+  background-color: #A729F5;
+  color: white;
+}
+
+label:hover{
+  cursor: pointer;
+}
+
+label:hover span{
+  background-color: #F6E7FF;
+  color: #A729F5;
+}
+
+label:has(.option:checked){
+  outline: 2px solid #A729F5;
+}
+
+.label-error{
+  outline: 2px solid #EE5454 !important;
+}
+
+.span-error{
+  background-color: #EE5454 !important;
+  color: white;
+}
+
+.label-success{
+  outline: 2px solid #26D782 !important;
+}
+
+.span-success{
+  background-color: #26D782 !important ;
+  color: white !important;
+}
+
+canvas{
+  background-color: transparent;
+}
