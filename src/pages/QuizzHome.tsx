@@ -1,25 +1,33 @@
-import "./App.css";
-import { QuizzHeader } from "../QuizzHeader/index";
-import { QuizzList } from "../QuizzList";
-import QuizzItem from "../QuizzItem";
 import QuizzThemeHeader from "../QuizzThemeHeader";
 import { QuizzToggle } from "../QuizzToggle";
-import { Quizzes,Quizz } from "../types/data.type.quizz";
-export const AppQuiz = ({dataQuizz,showOpcionsQuizz,setToogleTheme,toogleTheme}:{
-  dataQuizz:Quizzes,
-  showOpcionsQuizz:Quizz[],
-  setToogleTheme:React.Dispatch<React.SetStateAction<boolean>>; 
-  toogleTheme:boolean
+import { QuizzHeader } from "../QuizzHeader";
+import { QuizzList } from "../QuizzList";
+import QuizzItem from "../QuizzItem";
+import AppQuizz from "../AppQuizz";
+import { Quizz, Quizzes } from "../types/data.type.quizz";
+
+const QuizzHome = ({
+  toogleTheme,
+  setToogleTheme,
+  showOpcionsQuizz,
+  dataQuizz,
+}: {
+  toogleTheme: boolean;
+  setToogleTheme: React.Dispatch<React.SetStateAction<boolean>>;
+  showOpcionsQuizz: Quizz[];
+  dataQuizz: Quizzes;
 }) => {
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-4/5 ">
+    <AppQuizz
+      onShowThemeHeader={() => (
         <QuizzThemeHeader
           onShowToggle={() => (
             <QuizzToggle toogle={toogleTheme} setToogle={setToogleTheme} />
           )}
-        ></QuizzThemeHeader>
-        <QuizzHeader />
+        />
+      )}
+      onShowHeader={() => <QuizzHeader />}
+      onShowList={() => (
         <QuizzList
           quizzesInformationStart={showOpcionsQuizz}
           render={(quizz: any, index: number) => (
@@ -31,13 +39,15 @@ export const AppQuiz = ({dataQuizz,showOpcionsQuizz,setToogleTheme,toogleTheme}:
             />
           )}
         >
-          {(quizz: any, index: number) => {
+          {(quizz: Quizz, index: number) => {
             return (
               <QuizzItem key={index} title={quizz.title} icon={quizz.icon} />
             );
           }}
         </QuizzList>
-      </div>
-    </div>
+      )}
+    />
   );
 };
+
+export default QuizzHome;

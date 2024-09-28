@@ -1,28 +1,46 @@
-import QuizzProgress from "../QuizzProgress";
 import QuizzResult from "../QuizzResult";
-import { AppQuiz } from "./App";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useQuizz } from "./useQuizz";
+import QuizzHome from "../pages/QuizzHome";
+import QuizzNavigator from "../pages/QuizzNavigator";
 
 const App = () => {
-  const { dataQuizz, showOpcionsQuizz, setToogleTheme, toogleTheme, loading } =
-    useQuizz();
-  if(loading) return <div>Cargando...</div>
+  const {
+    dataQuizz,
+    showOpcionsQuizz,
+    setToogleTheme,
+    toogleTheme,
+    loading,
+    filterDataQuizz,
+    totalQuestions,
+    verifyOptions,
+  } = useQuizz();
+  if (loading) return <div>Cargando...</div>;
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <AppQuiz
+          <QuizzHome
             dataQuizz={dataQuizz}
-            setToogleTheme={setToogleTheme}
-            toogleTheme={toogleTheme}
             showOpcionsQuizz={showOpcionsQuizz}
+            toogleTheme={toogleTheme}
+            setToogleTheme={setToogleTheme}
           />
         }
       />
-      <Route path="/quizz/:title" element={<QuizzProgress />} />
+      <Route
+        path="/quizz/:title"
+        element={
+          <QuizzNavigator
+            filterDataQuizz={filterDataQuizz}
+            toogleTheme={toogleTheme}
+            setToogleTheme={setToogleTheme}
+            totalQuestions={totalQuestions}
+            verifyOptions={verifyOptions}
+          />
+        }
+      />
       <Route path="/quizz/:title/finish-quizz" element={<QuizzResult />} />
     </Routes>
   );

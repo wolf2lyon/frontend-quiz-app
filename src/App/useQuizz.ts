@@ -3,28 +3,41 @@ import { useFetch } from "./useFetch";
 import { Quizz } from "../types/data.type.quizz";
 export const useQuizz = () => {
   const { dataQuizz, loading, error } = useFetch();
-  const [toogleTheme,setToogleTheme] = useState<boolean>(false);
+  const [toogleTheme, setToogleTheme] = useState<boolean>(false);
 
-  const showOpcionsQuizz:Quizz[] = dataQuizz?.quizzes?.map(quiz => (
-    {
-      title:quiz.title,
-      icon:quiz.icon
+  const showOpcionsQuizz: Quizz[] = dataQuizz?.quizzes?.map((quiz) => ({
+    title: quiz.title,
+    icon: quiz.icon,
+  }));
+
+  const filterDataQuizz = (title: string) => {
+    // Verifica que dataQuizz y dataQuizz.quizzes existan y sean un array
+    if (!dataQuizz || !Array.isArray(dataQuizz.quizzes)) {
+      return { title: '', icon: '', questions: [] }; // Retorna un arreglo vacío si no hay datos
     }
-  ))
 
-  const filterDataQuizz = (title:string) => {
-    return dataQuizz.quizzes.find( (quiz) => quiz.title.toLocaleLowerCase() === title?.toLowerCase());
-  }
-  const totalQuestions = (title:string) => {
-    return dataQuizz.quizzes.find( (quiz) => quiz.title.toLowerCase() === title?.toLowerCase())?.question?.length;
-  }
+    // Busca el quiz que coincide con el título
+    const filteredQuiz: Quizz = dataQuizz.quizzes?.find(
+      (quiz) => quiz.title.toLowerCase() === title.toLowerCase()
+    ) || { title: '', icon: '', questions: [] }; // Valor por defecto
+    
 
-  const verifyOptions = (selectOption:any, answer:string) => {
-    console.log(selectOption,answer)
-    if(selectOption === answer) return true;
+    // Si se encuentra un quiz, lo devuelve en un array, de lo contrario, retorna un array vacío
+    return filteredQuiz;
+  };
+  const totalQuestions = (title: string) => {
+    const quiz = dataQuizz.quizzes?.find(
+      (quiz) => quiz.title.toLowerCase() === title.toLowerCase()
+    );
+    // Si no se encuentra el quiz o no tiene preguntas, retorna 0
+    return quiz?.questions ? quiz.questions.length : 0;
+  };
+
+  const verifyOptions = (selectOption: string, answer: string) => {
+    console.log(selectOption, answer);
+    if (selectOption === answer) return true;
     return false;
-  }
-
+  };
 
   return {
     dataQuizz,
@@ -35,6 +48,6 @@ export const useQuizz = () => {
     error,
     filterDataQuizz,
     totalQuestions,
-    verifyOptions
-  }
+    verifyOptions,
+  };
 };

@@ -5,7 +5,7 @@ export interface Quizzes {
 export interface Quizz {
     title:string;
     icon:string;
-    question?:QuestionQuizz[];
+    questions?:QuestionQuizz[];
 }
 
 export interface QuestionQuizz{
