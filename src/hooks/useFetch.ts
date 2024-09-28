@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Quizzes} from '../types/data.type.quizz';
 
 
-export const useFetch = () => {
+const useFetch = () => {
   const [dataQuizz, setDataQuizz] = useState<Quizzes>({quizzes:[]});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -31,3 +31,5 @@ export const useFetch = () => {
     error
   }
 };
+
+export default useFetch

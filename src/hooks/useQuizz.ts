@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useFetch } from "./useFetch";
+import useFetch from "./useFetch";
 import { Quizz } from "../types/data.type.quizz";
-export const useQuizz = () => {
+const useQuizz = () => {
   const { dataQuizz, loading, error } = useFetch();
   const [toogleTheme, setToogleTheme] = useState<boolean>(false);
   const [countTotalCorrectAnswer, setTotalCorrectAnswer] = useState<number>(0);
@@ -43,6 +43,10 @@ export const useQuizz = () => {
     return false;
   };
 
+  const changeToogle = ({ boolean = false }: { boolean?: boolean }) => {
+    setToogleTheme(boolean);
+  };
+
   return {
     dataQuizz,
     showOpcionsQuizz,
@@ -54,6 +58,9 @@ export const useQuizz = () => {
     totalQuestions,
     verifyOptions,
     changeTotalCorrectAnswer,
-    countTotalCorrectAnswer
+    countTotalCorrectAnswer,
+    changeToogle
   };
 };
+
+export default useQuizz

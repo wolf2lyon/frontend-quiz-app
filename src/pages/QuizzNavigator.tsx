@@ -1,32 +1,33 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Quizz } from "../types/data.type.quizz";
 import QuizzProgress from "../QuizzProgress";
 import QuizzThemeHeader from "../QuizzThemeHeader";
 import QuizzType from "../QuizzType";
-import { QuizzToggle } from "../QuizzToggle";
-import { QuizzQuestion } from "../QuizzQuestion";
+import QuizzToggle from "../QuizzToggle";
+import QuizzQuestion from "../QuizzQuestion";
 import QuizzListItemQuestion from "../QuizzListItemQuestion";
 import QuizzItemQuestion from "../QuizzItemQuestion";
 import QuizzMessageError from "../QuizzMessageError";
 import ButtonNextQuizz from "../ButtonNextQuizz";
 import ButtonSubmitQuizz from "../ButtonSubmitQuizz";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Quizz } from "../types/data.type.quizz";
+
 const QuizzNavigator = ({
   filterDataQuizz,
   toogleTheme,
-  setToogleTheme,
   totalQuestions,
   verifyOptions,
   changeTotalCorrectAnswer,
   countTotalCorrectAnswer,
+  changeToogle
 }: {
   filterDataQuizz: (title: string) => Quizz;
   toogleTheme: boolean;
-  setToogleTheme: React.Dispatch<React.SetStateAction<boolean>>;
   totalQuestions: (title: string) => number;
   verifyOptions: (selectOption: string, answer: string) => boolean;
   changeTotalCorrectAnswer: ({ number }: { number?: number }) => void;
   countTotalCorrectAnswer: number;
+  changeToogle: ({ boolean}: { boolean?: boolean }) => void;
 }) => {
   const { title } = useParams<{ title: string }>();
   const defaultQuizzSelection: Quizz = {
@@ -63,9 +64,7 @@ const QuizzNavigator = ({
   const changeIsDisabled = ({ boolean = false }: { boolean?: boolean }) => {
     setIsDisabled(boolean);
   };
-  const changeToogle = ({ boolean = false }: { boolean?: boolean }) => {
-    setToogleTheme(boolean);
-  };
+  
 
   useEffect(() => {
     const selectedQuizz: Quizz = filterDataQuizz(title ? title : "");

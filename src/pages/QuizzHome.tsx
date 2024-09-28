@@ -1,28 +1,28 @@
+import { Quizz, Quizzes } from "../types/data.type.quizz";
 import QuizzThemeHeader from "../QuizzThemeHeader";
-import { QuizzToggle } from "../QuizzToggle";
-import { QuizzHeader } from "../QuizzHeader";
-import { QuizzList } from "../QuizzList";
+import QuizzToggle from "../QuizzToggle";
+import QuizzHeader from "../QuizzHeader";
+import QuizzList from "../QuizzList";
 import QuizzItem from "../QuizzItem";
 import AppQuizz from "../AppQuizz";
-import { Quizz, Quizzes } from "../types/data.type.quizz";
 
 const QuizzHome = ({
   toogleTheme,
-  setToogleTheme,
   showOpcionsQuizz,
   dataQuizz,
+  changeToogle
 }: {
   toogleTheme: boolean;
-  setToogleTheme: React.Dispatch<React.SetStateAction<boolean>>;
   showOpcionsQuizz: Quizz[];
   dataQuizz: Quizzes;
+  changeToogle: ({ boolean}: { boolean?: boolean }) => void;
 }) => {
   return (
     <AppQuizz
       onShowThemeHeader={() => (
         <QuizzThemeHeader
           onShowToggle={() => (
-            <QuizzToggle toogle={toogleTheme} setToogle={setToogleTheme} />
+            <QuizzToggle toogle={toogleTheme} changeToogle={changeToogle} />
           )}
         />
       )}

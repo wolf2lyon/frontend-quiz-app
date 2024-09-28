@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const ButtonPlayQuizz = () => {
+const ButtonPlayQuizz = () => {
   const navigate = useNavigate();
   const handleReturnClick = () => {
     navigate('/')
@@ -11,3 +11,5 @@ export const ButtonPlayQuizz = () => {
     </button>
   );
 };
+
+export default ButtonPlayQuizz

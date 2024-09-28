@@ -1,7 +1,7 @@
 import iconMoonDark from "../assets/images/icon-moon-dark.svg";
 import iconSunDark from "../assets/images/icon-sun-dark.svg";
-import { QuizzIcon } from "../QuizzIcon/index";
-export const QuizzToggle = ({
+import QuizzIcon from "../QuizzIcon";
+const QuizzToggle = ({
   toogle,
   changeToogle,
 }: {
@@ -30,3 +30,4 @@ export const QuizzToggle = ({
     </div>
   );
 };
+export default QuizzToggle

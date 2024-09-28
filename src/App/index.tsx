@@ -1,21 +1,21 @@
-import QuizzResult from "../QuizzResult";
 import { Route, Routes } from "react-router-dom";
-import { useQuizz } from "./useQuizz";
+import useQuizz from "../hooks/useQuizz";
 import QuizzHome from "../pages/QuizzHome";
 import QuizzNavigator from "../pages/QuizzNavigator";
+import QuizzSumarry from "../pages/QuizzSumarry";
 
 const App = () => {
   const {
     dataQuizz,
     showOpcionsQuizz,
-    setToogleTheme,
     toogleTheme,
     loading,
     filterDataQuizz,
     totalQuestions,
     verifyOptions,
     changeTotalCorrectAnswer,
-    countTotalCorrectAnswer
+    countTotalCorrectAnswer,
+    changeToogle,
   } = useQuizz();
   if (loading) return <div>Cargando...</div>;
   return (
@@ -27,7 +27,7 @@ const App = () => {
             dataQuizz={dataQuizz}
             showOpcionsQuizz={showOpcionsQuizz}
             toogleTheme={toogleTheme}
-            setToogleTheme={setToogleTheme}
+            changeToogle={changeToogle}
           />
         }
       />
@@ -37,7 +37,7 @@ const App = () => {
           <QuizzNavigator
             filterDataQuizz={filterDataQuizz}
             toogleTheme={toogleTheme}
-            setToogleTheme={setToogleTheme}
+            changeToogle={changeToogle}
             totalQuestions={totalQuestions}
             verifyOptions={verifyOptions}
             changeTotalCorrectAnswer={changeTotalCorrectAnswer}
@@ -45,7 +45,16 @@ const App = () => {
           />
         }
       />
-      <Route path="/quizz/:title/finish-quizz" element={<QuizzResult />} />
+      <Route
+        path="/quizz/:title/finish-quizz"
+        element={
+          <QuizzSumarry
+            filterDataQuizz={filterDataQuizz}
+            toogleTheme={toogleTheme}
+            changeToogle={changeToogle}
+          />
+        }
+      />
     </Routes>
   );
 };

@@ -1,5 +1,5 @@
 
-export const QuizzHeader = () => {
+const QuizzHeader = () => {
   return (
     <>
         <h1 className="flex flex-col text-4xl font-light text-current-dark">Welcome to the <span className="font-medium text-current-dark">Frontend Quiz</span></h1>
@@ -7,3 +7,4 @@ export const QuizzHeader = () => {
     </>
   )
 }
+export default QuizzHeader

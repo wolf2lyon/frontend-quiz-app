@@ -1,6 +1,4 @@
-import "./QuizzQuestion.css";
-
-export const QuizzQuestion = ({
+const QuizzQuestion = ({
   count,
   question,
   totalQuestion,
@@ -27,3 +25,5 @@ export const QuizzQuestion = ({
     </div>
   );
 };
+
+export default QuizzQuestion
