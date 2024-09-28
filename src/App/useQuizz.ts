@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useFetch } from "./useFetch";
-
+import { Quizz } from "../types/data.type.quizz";
 export const useQuizz = () => {
   const { dataQuizz, loading, error } = useFetch();
-  const [toogleTheme,setToogleTheme] = useState(false);
+  const [toogleTheme,setToogleTheme] = useState<boolean>(false);
 
-  const showOpcionsQuizz = dataQuizz.quizzes.map(quiz => (
+  const showOpcionsQuizz:Quizz[] = dataQuizz?.quizzes?.map(quiz => (
     {
       title:quiz.title,
       icon:quiz.icon
@@ -13,10 +13,10 @@ export const useQuizz = () => {
   ))
 
   const filterDataQuizz = (title:string) => {
-    return dataQuizz.quizzes.find( (quiz:any) => quiz.title.toLowerCase() === title?.toLowerCase());
+    return dataQuizz.quizzes.find( (quiz) => quiz.title.toLocaleLowerCase() === title?.toLowerCase());
   }
   const totalQuestions = (title:string) => {
-    return dataQuizz.quizzes.find( (quiz:any) => quiz.title.toLowerCase() === title?.toLowerCase())?.questions.length;
+    return dataQuizz.quizzes.find( (quiz) => quiz.title.toLowerCase() === title?.toLowerCase())?.question?.length;
   }
 
   const verifyOptions = (selectOption:any, answer:string) => {

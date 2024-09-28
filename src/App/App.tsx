@@ -1,20 +1,16 @@
-import { useQuizz } from "./useQuizz";
 import "./App.css";
 import { QuizzHeader } from "../QuizzHeader/index";
 import { QuizzList } from "../QuizzList";
 import QuizzItem from "../QuizzItem";
 import QuizzThemeHeader from "../QuizzThemeHeader";
 import { QuizzToggle } from "../QuizzToggle";
-export const AppQuiz = () => {
-  const {
-    dataQuizz,
-    loading,
-    error,
-    showOpcionsQuizz,
-    setToogleTheme,
-    toogleTheme,
-  } = useQuizz();
-  console.log(dataQuizz.quizzes, loading, error);
+import { Quizzes,Quizz } from "../types/data.type.quizz";
+export const AppQuiz = ({dataQuizz,showOpcionsQuizz,setToogleTheme,toogleTheme}:{
+  dataQuizz:Quizzes,
+  showOpcionsQuizz:Quizz[],
+  setToogleTheme:React.Dispatch<React.SetStateAction<boolean>>; 
+  toogleTheme:boolean
+}) => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-4/5 ">
