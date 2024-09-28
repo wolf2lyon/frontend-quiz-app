@@ -14,6 +14,8 @@ const App = () => {
     filterDataQuizz,
     totalQuestions,
     verifyOptions,
+    changeTotalCorrectAnswer,
+    countTotalCorrectAnswer
   } = useQuizz();
   if (loading) return <div>Cargando...</div>;
   return (
@@ -38,6 +40,8 @@ const App = () => {
             setToogleTheme={setToogleTheme}
             totalQuestions={totalQuestions}
             verifyOptions={verifyOptions}
+            changeTotalCorrectAnswer={changeTotalCorrectAnswer}
+            countTotalCorrectAnswer={countTotalCorrectAnswer}
           />
         }
       />

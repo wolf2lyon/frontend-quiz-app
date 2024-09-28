@@ -6,47 +6,47 @@ const ButtonNextQuizz = ({
   passQuestion,
   countQuestion,
   nextQuestion,
-  setNextQuestion,
-  setSelectOption,
-  setCorrectAnswer,
-  setIsClick,
-  setIsDisabled,
+  changeNextQuestion,
+  changeSelectOption,
+  changeCorrectAnswer,
+  changeIsClick,
+  changeIsDisabled,
   dataTotalQuestion,
   countTotalCorrectAnswer,
-  setTotalCorrectAnswer,
+  changeTotalCorrectAnswer,
   selectOption,
   answer,
   title,
 }: {
   active: boolean;
-  passQuestion: any;
+  passQuestion: ({number}:{number:number}) => void;
   countQuestion: number;
-  nextQuestion: any;
-  setNextQuestion: any;
-  setSelectOption: any;
-  setCorrectAnswer: any;
-  setIsClick: any;
-  setIsDisabled: any;
-  dataTotalQuestion: any;
-  countTotalCorrectAnswer: any;
-  setTotalCorrectAnswer: any;
-  selectOption: any;
-  answer: any;
-  title: any;
+  nextQuestion: boolean;
+  changeNextQuestion: ({boolean}:{boolean:boolean}) => void;
+  changeSelectOption: ({string}:{string:string}) => void;
+  changeCorrectAnswer: ({boolean}:{boolean:boolean}) => void;
+  changeIsClick: ({boolean}:{boolean:boolean}) => void;
+  changeIsDisabled: ({boolean}:{boolean:boolean}) => void;
+  dataTotalQuestion: number;
+  countTotalCorrectAnswer: number;
+  changeTotalCorrectAnswer: ({number}:{number:number}) => void;
+  selectOption: string;
+  answer: string;
+  title: string;
 }) => {
   const navigate = useNavigate();
   const handleClickNextQuizz = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setNextQuestion(!nextQuestion);
-    setSelectOption("");
-    setCorrectAnswer(false);
-    setIsClick(false);
-    setIsDisabled(false);
+    changeNextQuestion({boolean:!nextQuestion});
+    changeSelectOption({string:""});
+    changeCorrectAnswer({boolean:false});
+    changeIsClick({boolean:false});
+    changeIsDisabled({boolean:false});
     if( countQuestion <= dataTotalQuestion){
-      passQuestion((countQuestion += 1));
+      passQuestion({number :countQuestion += 1});
     }
     if (answer === selectOption) {
-      setTotalCorrectAnswer((countTotalCorrectAnswer += 1));
+      changeTotalCorrectAnswer({number:countTotalCorrectAnswer += 1});
     }
     console.log(countTotalCorrectAnswer, answer, selectOption);
     if (countQuestion > dataTotalQuestion) {

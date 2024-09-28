@@ -1,65 +1,100 @@
 import iconCorrect from "../assets/images/icon-correct.svg";
 import iconError from "../assets/images/icon-error.svg";
-const QuizzItemQuestion = (props: any) => {
+const QuizzItemQuestion = ({
+  answer,
+  id,
+  option,
+  selectOption,
+  changeSelectOption,
+  correctAnswer,
+  isClick,
+  isDisabled,
+  changeIsClick,
+}: {
+  answer: string;
+  id: number;
+  option: string;
+  changeSelectOption: ({ string }: { string: string }) => void;
+  selectOption: string;
+  correctAnswer: boolean;
+  isClick: boolean;
+  isDisabled: boolean;
+  changeIsClick: ({ boolean }: { boolean: boolean }) => void;
+}) => {
   const letters = ["A", "B", "C", "D"];
-  const letterOption = letters[props.id] || "";
+  const letterOption = letters[id] || "";
   let styleCorrectAnswer = "";
   let chooseInputStlye = false;
   let chooseInputIncorrectStyle = false;
   const handleChangeOption = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.setSelectOption(e.target.value);
-    props.setIsClick(false);
+    changeSelectOption({ string: e.target.value });
+    changeIsClick({ boolean: false });
   };
-  if (props.answer === props.option) chooseInputStlye = true;
-  if (props.selectOption === props.option) chooseInputIncorrectStyle = true; 
-  console.log(chooseInputStlye, props.correctAnswer);
-  if (props.correctAnswer) {styleCorrectAnswer = "label-success"} else {styleCorrectAnswer = 'label-error'}; 
+  if (answer === option) chooseInputStlye = true;
+  if (selectOption === option) chooseInputIncorrectStyle = true;
+  console.log(chooseInputStlye, correctAnswer);
+  if (correctAnswer) {
+    styleCorrectAnswer = "label-success";
+  } else {
+    styleCorrectAnswer = "label-error";
+  }
   return (
     <label
       className={`flex min-h-16 p-3 gap-4 bg-white items-center rounded-xl ${
-        props.correctAnswer && chooseInputStlye ? styleCorrectAnswer : ""
+        correctAnswer && chooseInputStlye ? styleCorrectAnswer : ""
       } 
       ${
-        props.isClick && !props.correctAnswer && chooseInputIncorrectStyle && !!props.selectOption ? styleCorrectAnswer: ""
+        isClick && !correctAnswer && chooseInputIncorrectStyle && !!selectOption
+          ? styleCorrectAnswer
+          : ""
       }
       `}
     >
       <div className="flex items-center w-full bg-transparent gap-4 text-lg ">
         <input
-          id={`option-${props.id}`}
+          id={`option-${id}`}
           type="radio"
           name="option"
-          value={props.option}
-          checked={props.selectOption === props.option}
+          value={option}
+          checked={selectOption === option}
           className="option hidden"
           onChange={handleChangeOption}
-          disabled={props.isDisabled}
+          disabled={isDisabled}
         />
         <span
           className={`w-10 h-10 rounded-md flex justify-center items-center font-medium text-current-light ${
-            props.correctAnswer && chooseInputStlye ? "span-success" : ""
+            correctAnswer && chooseInputStlye ? "span-success" : ""
           }
           ${
-            props.isClick && !props.correctAnswer && chooseInputIncorrectStyle && !!props.selectOption ? 'span-error': ""
+            isClick &&
+            !correctAnswer &&
+            chooseInputIncorrectStyle &&
+            !!selectOption
+              ? "span-error"
+              : ""
           }
           `}
         >
           {letterOption}
         </span>
-        <p className="flex-1 bg-white">{props.option}</p>
+        <p className="flex-1 bg-white">{option}</p>
       </div>
       <span
         className={`bg-white block ${
-         props.isClick && (props.correctAnswer || !props.correctAnswer)  && (chooseInputStlye || chooseInputIncorrectStyle ) && !!props.selectOption ? "block" : "hidden"
+          isClick &&
+          (correctAnswer || !correctAnswer) &&
+          (chooseInputStlye || chooseInputIncorrectStyle) &&
+          !!selectOption
+            ? "block"
+            : "hidden"
         }  
         `}
       >
-        {
-          chooseInputStlye ?
+        {chooseInputStlye ? (
           <img className={`bg-white`} src={iconCorrect} alt="icon-correct" />
-          :
+        ) : (
           <img className={`bg-white`} src={iconError} alt="icon-error" />
-        }
+        )}
       </span>
     </label>
   );

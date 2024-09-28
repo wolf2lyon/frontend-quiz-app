@@ -1,12 +1,16 @@
 import iconMoonDark from "../assets/images/icon-moon-dark.svg";
 import iconSunDark from "../assets/images/icon-sun-dark.svg";
 import { QuizzIcon } from "../QuizzIcon/index";
-export const QuizzToggle = (props: any) => {
-  const toogle = props.toogle;
-  const setToogle = props.setToogle;
+export const QuizzToggle = ({
+  toogle,
+  changeToogle,
+}: {
+  toogle: boolean;
+  changeToogle: ({ boolean }: { boolean: boolean }) => void;
+}) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setToogle(!toogle);
+    changeToogle({boolean:!toogle});
     e.preventDefault();
   };
   return (

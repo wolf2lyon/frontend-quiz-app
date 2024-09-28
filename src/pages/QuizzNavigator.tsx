@@ -17,12 +17,16 @@ const QuizzNavigator = ({
   setToogleTheme,
   totalQuestions,
   verifyOptions,
+  changeTotalCorrectAnswer,
+  countTotalCorrectAnswer,
 }: {
   filterDataQuizz: (title: string) => Quizz;
   toogleTheme: boolean;
   setToogleTheme: React.Dispatch<React.SetStateAction<boolean>>;
   totalQuestions: (title: string) => number;
   verifyOptions: (selectOption: string, answer: string) => boolean;
+  changeTotalCorrectAnswer: ({ number }: { number?: number }) => void;
+  countTotalCorrectAnswer: number;
 }) => {
   const { title } = useParams<{ title: string }>();
   const defaultQuizzSelection: Quizz = {
@@ -40,7 +44,28 @@ const QuizzNavigator = ({
   const [nextQuestion, setNextQuestion] = useState<boolean>(false);
   const [isClick, setIsClick] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
-  const [countTotalCorrectAnswer, setTotalCorrectAnswer] = useState<number>(0);
+
+  const changeCountQuestion = ({ number = 0 }: { number?: number }) => {
+    setCountQuestion(number);
+  };
+  const changeSelectOption = ({ string = "" }: { string?: string }) => {
+    setSelectOption(string);
+  };
+  const changeCorrectAnswer = ({ boolean = false }: { boolean?: boolean }) => {
+    setCorrectAnswer(boolean);
+  };
+  const changeNextQuestion = ({ boolean = false }: { boolean?: boolean }) => {
+    setNextQuestion(boolean);
+  };
+  const changeIsClick = ({ boolean = false }: { boolean?: boolean }) => {
+    setIsClick(boolean);
+  };
+  const changeIsDisabled = ({ boolean = false }: { boolean?: boolean }) => {
+    setIsDisabled(boolean);
+  };
+  const changeToogle = ({ boolean = false }: { boolean?: boolean }) => {
+    setToogleTheme(boolean);
+  };
 
   useEffect(() => {
     const selectedQuizz: Quizz = filterDataQuizz(title ? title : "");
@@ -74,7 +99,7 @@ const QuizzNavigator = ({
             />
           )}
           onShowToggle={() => (
-            <QuizzToggle toogle={toogleTheme} setToogle={setToogleTheme} />
+            <QuizzToggle toogle={toogleTheme} changeToogle={changeToogle} />
           )}
         />
       )}
@@ -102,14 +127,14 @@ const QuizzNavigator = ({
                     key={index}
                     id={index}
                     selectOption={selectOption}
-                    setSelectOption={setSelectOption}
+                    changeSelectOption={changeSelectOption}
                     correctAnswer={correctAnswer}
                     answer={
                       dataQuizzSelection.questions[countQuestion - 1].answer
                     }
                     isClick={isClick}
                     isDisabled={isDisabled}
-                    setIsClick={setIsClick}
+                    changeIsClick={changeIsClick}
                   />
                 );
               } else {
@@ -125,14 +150,14 @@ const QuizzNavigator = ({
                     key={index}
                     id={index}
                     selectOption={selectOption}
-                    setSelectOption={setSelectOption}
+                    changeSelectOption={changeSelectOption}
                     correctAnswer={correctAnswer}
                     answer={
                       dataQuizzSelection.questions[countQuestion - 1].answer
                     }
                     isClick={isClick}
                     isDisabled={isDisabled}
-                    setIsClick={setIsClick}
+                    changeIsClick={changeIsClick}
                   />
                 );
               } else {
@@ -151,12 +176,11 @@ const QuizzNavigator = ({
             verifyOptions={verifyOptions}
             selectOption={selectOption}
             answer={dataQuizzSelection.questions[countQuestion - 1].answer}
-            setCorrectAnswer={setCorrectAnswer}
+            changeCorrectAnswer={changeCorrectAnswer}
             nextQuestion={nextQuestion}
-            setNextQuestion={setNextQuestion}
-            isClick={isClick}
-            setIsClick={setIsClick}
-            setIsDisabled={setIsDisabled}
+            changeNextQuestion={changeNextQuestion}
+            changeIsClick={changeIsClick}
+            changeIsDisabled={changeIsDisabled}
           />
         ) : (
           <div>No hay Preguntas para poder verificar</div>
@@ -167,17 +191,17 @@ const QuizzNavigator = ({
         dataQuizzSelection.questions[countQuestion - 1].answer ? (
           <ButtonNextQuizz
             active={nextQuestion}
-            passQuestion={setCountQuestion}
+            passQuestion={changeCountQuestion}
             countQuestion={countQuestion}
             nextQuestion={nextQuestion}
-            setNextQuestion={setNextQuestion}
-            setSelectOption={setSelectOption}
-            setCorrectAnswer={setCorrectAnswer}
-            setIsClick={setIsClick}
-            setIsDisabled={setIsDisabled}
+            changeNextQuestion={changeNextQuestion}
+            changeSelectOption={changeSelectOption}
+            changeCorrectAnswer={changeCorrectAnswer}
+            changeIsClick={changeIsClick}
+            changeIsDisabled={changeIsDisabled}
             dataTotalQuestion={dataTotalQuestion}
             countTotalCorrectAnswer={countTotalCorrectAnswer}
-            setTotalCorrectAnswer={setTotalCorrectAnswer}
+            changeTotalCorrectAnswer={changeTotalCorrectAnswer}
             selectOption={selectOption}
             answer={dataQuizzSelection.questions[countQuestion - 1].answer}
             title={dataQuizzSelection.title}

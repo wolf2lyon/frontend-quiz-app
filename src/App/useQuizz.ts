@@ -4,12 +4,16 @@ import { Quizz } from "../types/data.type.quizz";
 export const useQuizz = () => {
   const { dataQuizz, loading, error } = useFetch();
   const [toogleTheme, setToogleTheme] = useState<boolean>(false);
+  const [countTotalCorrectAnswer, setTotalCorrectAnswer] = useState<number>(0);
 
   const showOpcionsQuizz: Quizz[] = dataQuizz?.quizzes?.map((quiz) => ({
     title: quiz.title,
     icon: quiz.icon,
   }));
 
+  const changeTotalCorrectAnswer = ({ number = 0 }: { number?: number }) => {
+    setTotalCorrectAnswer(number);
+  };
   const filterDataQuizz = (title: string) => {
     // Verifica que dataQuizz y dataQuizz.quizzes existan y sean un array
     if (!dataQuizz || !Array.isArray(dataQuizz.quizzes)) {
@@ -49,5 +53,7 @@ export const useQuizz = () => {
     filterDataQuizz,
     totalQuestions,
     verifyOptions,
+    changeTotalCorrectAnswer,
+    countTotalCorrectAnswer
   };
 };
