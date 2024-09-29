@@ -62,7 +62,7 @@ const ButtonNextQuizz = ({
   if (active)
     return (
       <button
-        className="w-full bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer"
+        className="w-full bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl"
         onClick={handleClickNextQuizz}
       >
         Next Question

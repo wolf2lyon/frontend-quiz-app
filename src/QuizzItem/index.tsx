@@ -27,20 +27,20 @@ const QuizzItem = (props: any) => {
 
   return (
     <li
-      className={`flex items-center gap-3 hover:cursor-pointer  bg-white rounded-xl h-16 p-3 ${hoverBackgroundItem}`}
+      className={`flex items-center gap-3 hover:cursor-pointer  bg-white rounded-xl h-16 p-3 md:h-20 md:gap-8 2xl:min-w-[564px] md:p-5 ${hoverBackgroundItem}`}
       onClick={handleClick}
     >
         <>
           <span
-            className={`${backgroundSpan} w-10 h-10 flex items-center justify-center rounded-md `}
+            className={`${backgroundSpan} w-10 h-10 flex items-center justify-center rounded-md md:w-14 md:h-14`}
           >
             <img
-              className="bg-transparent w-3/5"
+              className="bg-transparent w-3/5 md:w-4/5"
               src={props.icon}
               alt={props.title}
             ></img>
           </span>
-          <p className="bg-transparent text-current-dark font-medium">
+          <p className="bg-transparent text-current-dark font-medium md:text-[28px]">
             {props.title}
           </p>
         </>

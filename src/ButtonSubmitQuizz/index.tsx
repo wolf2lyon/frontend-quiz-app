@@ -32,7 +32,7 @@ const ButtonSubmitQuizz = ({
       className={`${
         nextQuestion
           ? "hidden"
-          : "bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer w-full"
+          : "bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer w-full md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl"
       }`}
       onClick={handleVerifyOption}
     >

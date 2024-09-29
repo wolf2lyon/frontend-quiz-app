@@ -40,7 +40,7 @@ const QuizzItemQuestion = ({
   }
   return (
     <label
-      className={`flex min-h-16 p-3 gap-4 bg-white items-center rounded-xl ${
+      className={`flex min-h-16 p-3 gap-4 bg-white items-center rounded-xl md:p-5 ${
         correctAnswer && chooseInputStlye ? styleCorrectAnswer : ""
       } 
       ${
@@ -62,7 +62,7 @@ const QuizzItemQuestion = ({
           disabled={isDisabled}
         />
         <span
-          className={`w-10 h-10 rounded-md flex justify-center items-center font-medium text-current-light ${
+          className={`w-10 h-10 rounded-md flex justify-center items-center font-medium text-current-light md:font-medium md:text-3xl ${
             correctAnswer && chooseInputStlye ? "span-success" : ""
           }
           ${
@@ -77,7 +77,7 @@ const QuizzItemQuestion = ({
         >
           {letterOption}
         </span>
-        <p className="flex-1 bg-white">{option}</p>
+        <p className="flex-1 bg-white md:text-3xl md:font-medium">{option}</p>
       </div>
       <span
         className={`bg-white block ${
@@ -91,9 +91,9 @@ const QuizzItemQuestion = ({
         `}
       >
         {chooseInputStlye ? (
-          <img className={`bg-white`} src={iconCorrect} alt="icon-correct" />
+          <img className={`bg-white md:w-[42px]`} src={iconCorrect} alt="icon-correct" />
         ) : (
-          <img className={`bg-white`} src={iconError} alt="icon-error" />
+          <img className={`bg-white md:w-[42px]`} src={iconError} alt="icon-error" />
         )}
       </span>
     </label>
