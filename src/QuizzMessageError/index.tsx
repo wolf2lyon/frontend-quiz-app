@@ -5,7 +5,7 @@ const QuizzMessageError = (props:any) => {
   return (
     <div className='flex justify-center items-center text-accent font-normal text-lg mt-3'>
         <span>
-            <img className='md:w-[42px]' src={IconError} alt="icon-error" />
+            <img className='md:w-[2.625rem]' src={IconError} alt="icon-error" />
         </span>
         <p className='md:text-2xl md:font-normal'>
             Please select an aswer

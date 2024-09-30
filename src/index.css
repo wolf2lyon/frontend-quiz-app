@@ -74,3 +74,9 @@ label:has(.option:checked){
 canvas{
   background-color: transparent;
 }
+
+@media (min-width: 1536px) and (max-height: 850px) {
+  html{
+    font-size: 11px;
+  }
+}

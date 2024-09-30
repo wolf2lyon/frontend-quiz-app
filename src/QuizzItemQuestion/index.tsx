@@ -91,9 +91,9 @@ const QuizzItemQuestion = ({
         `}
       >
         {chooseInputStlye ? (
-          <img className={`bg-white md:w-[42px]`} src={iconCorrect} alt="icon-correct" />
+          <img className={`bg-white md:w-[2.625rem]`} src={iconCorrect} alt="icon-correct" />
         ) : (
-          <img className={`bg-white md:w-[42px]`} src={iconError} alt="icon-error" />
+          <img className={`bg-white md:w-[2.625rem]`} src={iconError} alt="icon-error" />
         )}
       </span>
     </label>

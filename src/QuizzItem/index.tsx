@@ -27,7 +27,7 @@ const QuizzItem = (props: any) => {
 
   return (
     <li
-      className={`flex items-center gap-3 hover:cursor-pointer  bg-white rounded-xl h-16 p-3 md:h-20 md:gap-8 2xl:min-w-[564px] md:p-5 ${hoverBackgroundItem}`}
+      className={`flex items-center gap-3 hover:cursor-pointer  bg-white rounded-xl h-16 p-3 md:h-20 md:gap-8 2xl:min-w-[35.25rem] md:p-5 ${hoverBackgroundItem}`}
       onClick={handleClick}
     >
         <>
@@ -40,7 +40,7 @@ const QuizzItem = (props: any) => {
               alt={props.title}
             ></img>
           </span>
-          <p className="bg-transparent text-current-dark font-medium md:text-[28px]">
+          <p className="bg-transparent text-current-dark font-medium md:text-[1.75rem]">
             {props.title}
           </p>
         </>
