@@ -26,6 +26,7 @@ const App = () => {
             showOpcionsQuizz={showOpcionsQuizz}
             toogleTheme={toogleTheme}
             changeToogle={changeToogle}
+            changeTotalCorrectAnswer={changeTotalCorrectAnswer}
           />
         }
       />

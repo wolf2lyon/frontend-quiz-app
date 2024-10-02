@@ -5,16 +5,22 @@ import QuizzHeader from "../QuizzHeader";
 import QuizzList from "../QuizzList";
 import QuizzItem from "../QuizzItem";
 import AppQuizz from "../AppQuizz";
+import { useEffect } from "react";
 
 const QuizzHome = ({
   toogleTheme,
   showOpcionsQuizz,
-  changeToogle
+  changeToogle,
+  changeTotalCorrectAnswer
 }: {
   toogleTheme: boolean;
   showOpcionsQuizz: Quizz[];
   changeToogle: ({ boolean}: { boolean?: boolean }) => void;
+  changeTotalCorrectAnswer:({number}:{number:number}) => void;
 }) => {
+  useEffect(()=>{
+    changeTotalCorrectAnswer({number:0})
+  },[])
   return (
     <AppQuizz
       onShowThemeHeader={() => (
