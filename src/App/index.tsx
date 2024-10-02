@@ -3,6 +3,7 @@ import useQuizz from "../hooks/useQuizz";
 import QuizzHome from "../pages/QuizzHome";
 import QuizzNavigator from "../pages/QuizzNavigator";
 import QuizzSumarry from "../pages/QuizzSumarry";
+import LoadingQuizz from "../LoadingQuizz";
 
 const App = () => {
   const {
@@ -16,7 +17,7 @@ const App = () => {
     countTotalCorrectAnswer,
     changeToogle,
   } = useQuizz();
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <LoadingQuizz/>;
   return (
     <Routes>
       <Route
