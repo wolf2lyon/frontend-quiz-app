@@ -17,6 +17,7 @@ const ButtonNextQuizz = ({
   selectOption,
   answer,
   title,
+  toogleTheme
 }: {
   active: boolean;
   passQuestion: ({number}:{number:number}) => void;
@@ -33,7 +34,9 @@ const ButtonNextQuizz = ({
   selectOption: string;
   answer: string;
   title: string;
+  toogleTheme:boolean
 }) => {
+  const styleDarkModeHover = !!toogleTheme ? 'button-hover-dark' : 'hover:bg-primary hover:opacity-50'
   const navigate = useNavigate();
   const handleClickNextQuizz = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -62,7 +65,7 @@ const ButtonNextQuizz = ({
   if (active)
     return (
       <button
-        className="w-full bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl"
+        className={`w-full bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 ${styleDarkModeHover} hover:cursor-pointer md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl`}
         onClick={handleClickNextQuizz}
       >
         Next Question

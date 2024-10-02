@@ -184,6 +184,7 @@ const QuizzNavigator = ({
             changeNextQuestion={changeNextQuestion}
             changeIsClick={changeIsClick}
             changeIsDisabled={changeIsDisabled}
+            toogleTheme={toogleTheme}
           />
         ) : (
           <div>No hay Preguntas para poder verificar</div>
@@ -208,6 +209,7 @@ const QuizzNavigator = ({
             selectOption={selectOption}
             answer={dataQuizzSelection.questions[countQuestion - 1].answer}
             title={dataQuizzSelection.title}
+            toogleTheme={toogleTheme}
           />
         ) : (
           <div>No hay preguntas para seguir</div>

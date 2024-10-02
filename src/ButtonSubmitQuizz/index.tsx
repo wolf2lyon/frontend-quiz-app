@@ -7,6 +7,7 @@ const ButtonSubmitQuizz = ({
   answer,
   verifyOptions,
   changeCorrectAnswer,
+  toogleTheme
 }: {
   changeNextQuestion: ({ boolean }: { boolean: boolean }) => void;
   nextQuestion: boolean;
@@ -16,6 +17,7 @@ const ButtonSubmitQuizz = ({
   answer: string;
   verifyOptions: (selectOption: string, answer: string) => boolean;
   changeCorrectAnswer: ({ boolean }: { boolean: boolean }) => void;
+  toogleTheme:boolean
 }) => {
   const handleVerifyOption = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,12 +29,13 @@ const ButtonSubmitQuizz = ({
       changeIsDisabled({ boolean: true });
     }
   };
+  const styleDarkModeHover = !!toogleTheme ? 'button-hover-dark' : 'hover:bg-primary hover:opacity-50' ;
   return (
     <button
       className={`${
         nextQuestion
           ? "hidden"
-          : "bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 hover:bg-primary hover:opacity-50 hover:cursor-pointer w-full md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl"
+          : `bg-primary text-white text-lg font-medium  rounded-xl h-14 flex justify-center items-center mt-3 ${styleDarkModeHover} hover:cursor-pointer w-full md:mt-8 md:h-24 md:font-medium md:text-3xl 2xl:rounded-3xl`
       }`}
       onClick={handleVerifyOption}
     >
