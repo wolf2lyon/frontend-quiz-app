@@ -4,6 +4,7 @@ import QuizzHome from "../pages/QuizzHome";
 import QuizzNavigator from "../pages/QuizzNavigator";
 import QuizzSumarry from "../pages/QuizzSumarry";
 import LoadingQuizz from "../LoadingQuizz";
+import AppNotFound from "../AppNotFound";
 
 const App = () => {
   const {
@@ -55,6 +56,7 @@ const App = () => {
           />
         }
       />
+      <Route path="*" element={<AppNotFound/>}/>
     </Routes>
   );
 };

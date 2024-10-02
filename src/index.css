@@ -83,6 +83,11 @@ canvas{
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), #A729F5 !important;
 }
 
+.dark-mode{
+ background-color: #313E51;
+}
+
+
 @media (min-width: 1536px) and (max-height: 850px) {
   html{
     font-size: 11px;

@@ -12,8 +12,14 @@ const QuizzToggle = ({
 }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    changeToogle({boolean:!toogle});
     e.preventDefault();
+    changeToogle({boolean:!toogle});
+    if(!toogle){
+      document.documentElement.classList.add('dark-mode');
+    }else{
+      document.documentElement.classList.remove('dark-mode');
+    }
+
   };
   return (
     <div className="h-5 flex gap-2 md:h-7 md:self-center md:items-center bg-transparent">

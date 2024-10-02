@@ -16,10 +16,11 @@ const useQuizz = () => {
   };
   const filterDataQuizz = (title: string) => {
     // Verifica que dataQuizz y dataQuizz.quizzes existan y sean un array
+    console.log(dataQuizz);
     if (!dataQuizz || !Array.isArray(dataQuizz.quizzes)) {
       return { title: '', icon: '', questions: [] }; // Retorna un arreglo vacío si no hay datos
     }
-
+    
     // Busca el quiz que coincide con el título
     const filteredQuiz: Quizz = dataQuizz.quizzes?.find(
       (quiz) => quiz.title.toLowerCase() === title.toLowerCase()

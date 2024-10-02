@@ -67,9 +67,11 @@ const QuizzNavigator = ({
   
 
   useEffect(() => {
+    console.log(title)
     const selectedQuizz: Quizz = filterDataQuizz(title ? title : "");
     const selectTotalQuestion = totalQuestions(title ? title : "");
     console.log(selectedQuizz);
+    console.log(filterDataQuizz);
     setDataQuizzSelection(selectedQuizz);
     setDataTotalQuestion(selectTotalQuestion);
     console.log(dataQuizzSelection);
@@ -87,7 +89,7 @@ const QuizzNavigator = ({
     console.log(dataQuizzSelection);
   }
   const iconPath = new URL(dataQuizzSelection.icon,import.meta.url).href;
-
+  
   return (
     <QuizzProgress
       onShowThemeHeader={() => (

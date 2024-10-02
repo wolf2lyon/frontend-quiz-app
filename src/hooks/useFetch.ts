@@ -7,6 +7,7 @@ const useFetch = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+
       setTimeout(async () => {
         try {
           const response = await fetch("./data.json");
@@ -21,6 +22,7 @@ const useFetch = () => {
       }, 2000);
     };
     fetchData();
+    console.log(dataQuizz) 
   }, []);
 
   return {
