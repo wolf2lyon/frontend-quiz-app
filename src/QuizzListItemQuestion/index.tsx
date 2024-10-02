@@ -9,7 +9,7 @@ interface QuizzListItemQuestionProps {
 const QuizzListItemQuestion:React.FC<QuizzListItemQuestionProps> = ({options,render,children}) => {
   const renderFn = !children ? render : children;
   return (
-    <ul className="flex flex-col gap-3 mt-10 md:gap-6">
+    <ul className="flex flex-col gap-3 mt-10 md:gap-6 bg-transparent">
       {options.map((option, index) => renderFn(option, index))}
     </ul>
   );

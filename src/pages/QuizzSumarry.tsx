@@ -65,6 +65,7 @@ const QuizzSumarry = ({
             <QuizzType
               icon={dataQuizzSelection.icon.slice(1)}
               title={dataQuizzSelection.title}
+              toogleTheme={toogleTheme}
             />
           )}
           onShowToggle={() => (
@@ -72,22 +73,25 @@ const QuizzSumarry = ({
           )}
         />
       )}
-      onShowTitleResult={() => <QuizzTitleResult />}
+      onShowTitleResult={() => <QuizzTitleResult toogleTheme={toogleTheme}  />}
       onShowChartScore={() => (
         <QuizzChartScore
           onShowType={() => (
             <QuizzType
+              toogleTheme={toogleTheme}
               icon={dataQuizzSelection.icon.slice(1)}
               title={dataQuizzSelection.title}
             />
           )}
           onShowScore={() => (
-            <QuizzScore score={score} totalQuestion={totalQuestion} />
+            <QuizzScore score={score} totalQuestion={totalQuestion} toogleTheme={toogleTheme} />
           )}
+          toogleTheme={toogleTheme}
         />
       )}
-      onShowPlayQuizz={() => (<ButtonPlayQuizz />)}
+      onShowPlayQuizz={() => (<ButtonPlayQuizz toogleTheme={toogleTheme}/>)}
       onShowConfetti={()=> (<QuizzConfetti />)}
+      toogleTheme={toogleTheme}
     />
   );
 };

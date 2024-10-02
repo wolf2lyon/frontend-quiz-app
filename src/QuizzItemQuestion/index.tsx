@@ -10,6 +10,7 @@ const QuizzItemQuestion = ({
   isClick,
   isDisabled,
   changeIsClick,
+  toogleTheme
 }: {
   answer: string;
   id: number;
@@ -20,12 +21,15 @@ const QuizzItemQuestion = ({
   isClick: boolean;
   isDisabled: boolean;
   changeIsClick: ({ boolean }: { boolean: boolean }) => void;
+  toogleTheme:boolean
 }) => {
   const letters = ["A", "B", "C", "D"];
   const letterOption = letters[id] || "";
   let styleCorrectAnswer = "";
   let chooseInputStlye = false;
   let chooseInputIncorrectStyle = false;
+  const styleDarkMode = !!toogleTheme  ? 'bg-current' : 'bg-white' ;
+  const styleDarkModeP = !!toogleTheme  ? 'text-white' : 'text-current' ;
   const handleChangeOption = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeSelectOption({ string: e.target.value });
     changeIsClick({ boolean: false });
@@ -40,7 +44,7 @@ const QuizzItemQuestion = ({
   }
   return (
     <label
-      className={`flex min-h-16 p-3 gap-4 bg-white items-center rounded-xl md:p-5 ${
+      className={`flex min-h-16 p-3 gap-4 ${styleDarkMode} items-center rounded-xl md:p-5 ${
         correctAnswer && chooseInputStlye ? styleCorrectAnswer : ""
       } 
       ${
@@ -61,7 +65,7 @@ const QuizzItemQuestion = ({
           onChange={handleChangeOption}
           disabled={isDisabled}
         />
-        <span
+        <span id="option-question-letter"
           className={`w-10 h-10 rounded-md flex justify-center items-center font-medium text-current-light md:font-medium md:text-3xl ${
             correctAnswer && chooseInputStlye ? "span-success" : ""
           }
@@ -77,10 +81,10 @@ const QuizzItemQuestion = ({
         >
           {letterOption}
         </span>
-        <p className="flex-1 bg-white md:text-3xl md:font-medium">{option}</p>
+        <p className={`flex-1 bg-transparent md:text-3xl md:font-medium ${styleDarkModeP}`}>{option}</p>
       </div>
       <span
-        className={`bg-white block ${
+        className={`bg-transparent block ${
           isClick &&
           (correctAnswer || !correctAnswer) &&
           (chooseInputStlye || chooseInputIncorrectStyle) &&
@@ -91,9 +95,9 @@ const QuizzItemQuestion = ({
         `}
       >
         {chooseInputStlye ? (
-          <img className={`bg-white md:w-[2.625rem]`} src={iconCorrect} alt="icon-correct" />
+          <img className={`bg-transparent md:w-[2.625rem]`} src={iconCorrect} alt="icon-correct" />
         ) : (
-          <img className={`bg-white md:w-[2.625rem]`} src={iconError} alt="icon-error" />
+          <img className={`bg-transparent md:w-[2.625rem]`} src={iconError} alt="icon-error" />
         )}
       </span>
     </label>

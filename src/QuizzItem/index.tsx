@@ -20,6 +20,8 @@ const QuizzItem = (props: any) => {
     backgroundSpan = `bg-[#F6E7FF]`;
     hoverBackgroundItem = `hover:bg-primary hover:opacity-75`;
   }
+  const styleDarkMode = !!props.toogleTheme ? 'bg-current' : 'bg-white ';
+  const styleDarkModeP = !!props.toogleTheme ? 'text-white' : 'text-current-dark';
 
   const handleClick = () => {
     navigate(`/quizz/${titleLowerCase}`);
@@ -27,7 +29,7 @@ const QuizzItem = (props: any) => {
 
   return (
     <li
-      className={`flex items-center gap-3 hover:cursor-pointer  bg-white rounded-xl h-16 p-3 md:h-20 md:gap-8 2xl:min-w-[35.25rem] md:p-5 ${hoverBackgroundItem}`}
+      className={`flex items-center gap-3 hover:cursor-pointer rounded-xl h-16 p-3 md:h-20 md:gap-8 2xl:min-w-[35.25rem] md:p-5 ${styleDarkMode} ${hoverBackgroundItem}`}
       onClick={handleClick}
     >
         <>
@@ -40,7 +42,7 @@ const QuizzItem = (props: any) => {
               alt={props.title}
             ></img>
           </span>
-          <p className="bg-transparent text-current-dark font-medium md:text-[1.75rem]">
+          <p className={`bg-transparent font-medium md:text-[1.75rem] ${styleDarkModeP}`}>
             {props.title}
           </p>
         </>

@@ -95,6 +95,7 @@ const QuizzNavigator = ({
             <QuizzType
               icon={dataQuizzSelection.icon.slice(1)}
               title={dataQuizzSelection.title}
+              toogleTheme={toogleTheme}
             />
           )}
           onShowToggle={() => (
@@ -109,6 +110,7 @@ const QuizzNavigator = ({
             count={countQuestion}
             question={dataQuizzSelection.questions[countQuestion - 1].question}
             totalQuestion={dataTotalQuestion}
+            toogleTheme={toogleTheme}
           />
         ) : (
           <div>No hay Preguntas...</div>
@@ -134,6 +136,7 @@ const QuizzNavigator = ({
                     isClick={isClick}
                     isDisabled={isDisabled}
                     changeIsClick={changeIsClick}
+                    toogleTheme={toogleTheme}
                   />
                 );
               } else {
@@ -157,6 +160,7 @@ const QuizzNavigator = ({
                     isClick={isClick}
                     isDisabled={isDisabled}
                     changeIsClick={changeIsClick}
+                    toogleTheme={toogleTheme}
                   />
                 );
               } else {
@@ -212,6 +216,8 @@ const QuizzNavigator = ({
       onShowMessageError={() => (
         <QuizzMessageError selectOption={selectOption} isClick={isClick} />
       )}
+      toogleTheme={toogleTheme}
+      
     />
   );
 };

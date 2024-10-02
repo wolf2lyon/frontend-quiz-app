@@ -26,26 +26,29 @@ const QuizzHome = ({
           )}
         />
       )}
-      onShowHeader={() => <QuizzHeader />}
+      onShowHeader={() => <QuizzHeader toogleTheme={toogleTheme}/>}
       onShowList={() => (
         <QuizzList
           quizzesInformationStart={showOpcionsQuizz}
+          toogleTheme={toogleTheme}
           render={(quizz: any, index: number) => (
             <QuizzItem
               key={index}
               title={quizz.title}
               icon={quizz.icon}
               dataQuizz={dataQuizz}
+              toogleTheme={toogleTheme}
             />
           )}
         >
           {(quizz: Quizz, index: number) => {
             return (
-              <QuizzItem key={index} title={quizz.title} icon={quizz.icon} />
+              <QuizzItem key={index} title={quizz.title} icon={quizz.icon} toogleTheme={toogleTheme} />
             );
           }}
         </QuizzList>
       )}
+      toogleTheme={toogleTheme}
     />
   );
 };
