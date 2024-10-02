@@ -1,27 +1,31 @@
 import { useNavigate } from "react-router-dom";
-const QuizzItem = (props: any) => {
+const QuizzItem = ({title,icon,toogleTheme}:{
+  title:string;
+  icon:string;
+  toogleTheme:boolean
+}) => {
   let backgroundSpan = "";
   let hoverBackgroundItem = "";
-  const titleLowerCase = !!props.title ? props.title.toLowerCase() : "";
+  const titleLowerCase = !!title ? title.toLowerCase() : "";
   const navigate = useNavigate();
-  if (props.title === "HTML") {
+  if (title === "HTML") {
     backgroundSpan = `bg-[#FFF1E9]`;
     hoverBackgroundItem = `hover:bg-accent hover:opacity-75`;
   }
-  if (props.title === "CSS") {
+  if (title === "CSS") {
     backgroundSpan = `bg-[#E0FDEF]`;
     hoverBackgroundItem = `hover:bg-success hover:opacity-75`;
   }
-  if (props.title === "JavaScript") {
+  if (title === "JavaScript") {
     backgroundSpan = `bg-[#EBF0FF]`;
     hoverBackgroundItem = `hover:bg-secondary hover:opacity-75`;
   }
-  if (props.title === "Accessibility") {
+  if (title === "Accessibility") {
     backgroundSpan = `bg-[#F6E7FF]`;
     hoverBackgroundItem = `hover:bg-primary hover:opacity-75`;
   }
-  const styleDarkMode = !!props.toogleTheme ? 'bg-current' : 'bg-white ';
-  const styleDarkModeP = !!props.toogleTheme ? 'text-white' : 'text-current-dark';
+  const styleDarkMode = !!toogleTheme ? 'bg-current' : 'bg-white ';
+  const styleDarkModeP = !!toogleTheme ? 'text-white' : 'text-current-dark';
 
   const handleClick = () => {
     navigate(`/quizz/${titleLowerCase}`);
@@ -38,12 +42,12 @@ const QuizzItem = (props: any) => {
           >
             <img
               className="bg-transparent w-3/5 md:w-4/5"
-              src={props.icon}
-              alt={props.title}
+              src={icon}
+              alt={title}
             ></img>
           </span>
           <p className={`bg-transparent font-medium md:text-[1.75rem] ${styleDarkModeP}`}>
-            {props.title}
+            {title}
           </p>
         </>
     </li>

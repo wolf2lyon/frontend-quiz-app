@@ -1,4 +1,4 @@
-import { Quizz, Quizzes } from "../types/data.type.quizz";
+import { Quizz} from "../types/data.type.quizz";
 import QuizzThemeHeader from "../QuizzThemeHeader";
 import QuizzToggle from "../QuizzToggle";
 import QuizzHeader from "../QuizzHeader";
@@ -9,12 +9,10 @@ import AppQuizz from "../AppQuizz";
 const QuizzHome = ({
   toogleTheme,
   showOpcionsQuizz,
-  dataQuizz,
   changeToogle
 }: {
   toogleTheme: boolean;
   showOpcionsQuizz: Quizz[];
-  dataQuizz: Quizzes;
   changeToogle: ({ boolean}: { boolean?: boolean }) => void;
 }) => {
   return (
@@ -31,20 +29,34 @@ const QuizzHome = ({
         <QuizzList
           quizzesInformationStart={showOpcionsQuizz}
           toogleTheme={toogleTheme}
-          render={(quizz: any, index: number) => (
-            <QuizzItem
-              key={index}
-              title={quizz.title}
-              icon={quizz.icon}
-              dataQuizz={dataQuizz}
-              toogleTheme={toogleTheme}
-            />
-          )}
+          render={(quizz: Quizz, index: number) => {
+            if(showOpcionsQuizz){
+              return (
+                <QuizzItem
+                  key={index}
+                  title={quizz.title}
+                  icon={quizz.icon}
+                  toogleTheme={toogleTheme}
+                />
+              )
+            }else{
+              return <div></div>
+            }
+          }}
         >
           {(quizz: Quizz, index: number) => {
-            return (
-              <QuizzItem key={index} title={quizz.title} icon={quizz.icon} toogleTheme={toogleTheme} />
-            );
+            if(showOpcionsQuizz){
+              return (
+                <QuizzItem
+                  key={index}
+                  title={quizz.title}
+                  icon={quizz.icon}
+                  toogleTheme={toogleTheme}
+                />
+              )
+            }else{
+              return <div></div>
+            }
           }}
         </QuizzList>
       )}

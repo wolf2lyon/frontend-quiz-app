@@ -6,7 +6,6 @@ import QuizzSumarry from "../pages/QuizzSumarry";
 
 const App = () => {
   const {
-    dataQuizz,
     showOpcionsQuizz,
     toogleTheme,
     loading,
@@ -24,7 +23,6 @@ const App = () => {
         path="/"
         element={
           <QuizzHome
-            dataQuizz={dataQuizz}
             showOpcionsQuizz={showOpcionsQuizz}
             toogleTheme={toogleTheme}
             changeToogle={changeToogle}

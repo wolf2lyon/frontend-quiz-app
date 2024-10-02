@@ -22,14 +22,14 @@ const QuizzSumarry = ({
 }) => {
   const location = useLocation();
   const { state } = location;
-  const title = state.title;
-  const score = state.score;
+  const title:string = state.title;
+  const score:number = state.score;
   const defaultQuizzSelection: Quizz = {
     title: "",
     icon: "",
     questions: [],
   };
-  const totalQuestion = state.totalQuestion;
+  const totalQuestion:number = state.totalQuestion;
   const [dataQuizzSelection, setDataQuizzSelection] = useState<Quizz>(
     defaultQuizzSelection
   );

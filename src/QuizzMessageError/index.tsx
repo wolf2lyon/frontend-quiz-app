@@ -1,7 +1,7 @@
 import IconError from '../assets/images/icon-error.svg';
-const QuizzMessageError = (props:any) => {
-  console.log(props.selectOption,props.isClick)
-  if(!props.selectOption && props.isClick)
+const QuizzMessageError = ({selectOption,isClick}:{selectOption:string,isClick:boolean}) => {
+  console.log(selectOption,isClick)
+  if(!selectOption && isClick)
   return (
     <div className='flex justify-center items-center text-accent font-normal text-lg mt-3 bg-transparent'>
         <span className='bg-transparent'>
