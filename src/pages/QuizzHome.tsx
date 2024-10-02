@@ -37,11 +37,12 @@ const QuizzHome = ({
           toogleTheme={toogleTheme}
           render={(quizz: Quizz, index: number) => {
             if(showOpcionsQuizz){
+              const iconPath = new URL(quizz.icon,import.meta.url).href;
               return (
                 <QuizzItem
                   key={index}
                   title={quizz.title}
-                  icon={quizz.icon}
+                  icon={iconPath}
                   toogleTheme={toogleTheme}
                 />
               )
@@ -52,11 +53,12 @@ const QuizzHome = ({
         >
           {(quizz: Quizz, index: number) => {
             if(showOpcionsQuizz){
+              const iconPath = new URL(quizz.icon,import.meta.url).href;
               return (
                 <QuizzItem
                   key={index}
                   title={quizz.title}
-                  icon={quizz.icon}
+                  icon={iconPath}
                   toogleTheme={toogleTheme}
                 />
               )

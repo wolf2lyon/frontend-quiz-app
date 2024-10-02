@@ -86,6 +86,7 @@ const QuizzNavigator = ({
   ) {
     console.log(dataQuizzSelection);
   }
+  const iconPath = new URL(dataQuizzSelection.icon,import.meta.url).href;
 
   return (
     <QuizzProgress
@@ -93,7 +94,7 @@ const QuizzNavigator = ({
         <QuizzThemeHeader
           onShowType={() => (
             <QuizzType
-              icon={dataQuizzSelection.icon.slice(1)}
+              icon={iconPath}
               title={dataQuizzSelection.title}
               toogleTheme={toogleTheme}
             />

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Quizzes} from '../types/data.type.quizz';
-
-
 const useFetch = () => {
   const [dataQuizz, setDataQuizz] = useState<Quizzes>({quizzes:[]});
   const [loading, setLoading] = useState<boolean>(true);
@@ -11,7 +9,7 @@ const useFetch = () => {
     const fetchData = async () => {
       setTimeout(async () => {
         try {
-          const response = await fetch("../../data.json");
+          const response = await fetch("./data.json");
           const result = await response.json();
           if (!response.ok) throw new Error("Error al obtener los datos");
           setDataQuizz(result);

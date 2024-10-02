@@ -22,14 +22,14 @@ const QuizzSumarry = ({
 }) => {
   const location = useLocation();
   const { state } = location;
-  const title:string = state.title;
-  const score:number = state.score;
+  const title: string = state.title;
+  const score: number = state.score;
   const defaultQuizzSelection: Quizz = {
     title: "",
     icon: "",
     questions: [],
   };
-  const totalQuestion:number = state.totalQuestion;
+  const totalQuestion: number = state.totalQuestion;
   const [dataQuizzSelection, setDataQuizzSelection] = useState<Quizz>(
     defaultQuizzSelection
   );
@@ -55,7 +55,7 @@ const QuizzSumarry = ({
     console.log(dataQuizzSelection);
     return <div>Cargando...</div>; // Mostrar un mensaje de carga o un spinner
   }
-
+  const iconPath = new URL(dataQuizzSelection.icon, import.meta.url).href;
   return (
     <QuizzResult
       showConfetti={showConfetti}
@@ -63,7 +63,7 @@ const QuizzSumarry = ({
         <QuizzThemeHeader
           onShowType={() => (
             <QuizzType
-              icon={dataQuizzSelection.icon.slice(1)}
+              icon={iconPath}
               title={dataQuizzSelection.title}
               toogleTheme={toogleTheme}
             />
@@ -73,24 +73,28 @@ const QuizzSumarry = ({
           )}
         />
       )}
-      onShowTitleResult={() => <QuizzTitleResult toogleTheme={toogleTheme}  />}
+      onShowTitleResult={() => <QuizzTitleResult toogleTheme={toogleTheme} />}
       onShowChartScore={() => (
         <QuizzChartScore
           onShowType={() => (
             <QuizzType
               toogleTheme={toogleTheme}
-              icon={dataQuizzSelection.icon.slice(1)}
+              icon={iconPath}
               title={dataQuizzSelection.title}
             />
           )}
           onShowScore={() => (
-            <QuizzScore score={score} totalQuestion={totalQuestion} toogleTheme={toogleTheme} />
+            <QuizzScore
+              score={score}
+              totalQuestion={totalQuestion}
+              toogleTheme={toogleTheme}
+            />
           )}
           toogleTheme={toogleTheme}
         />
       )}
-      onShowPlayQuizz={() => (<ButtonPlayQuizz toogleTheme={toogleTheme}/>)}
-      onShowConfetti={()=> (<QuizzConfetti />)}
+      onShowPlayQuizz={() => <ButtonPlayQuizz toogleTheme={toogleTheme} />}
+      onShowConfetti={() => <QuizzConfetti />}
       toogleTheme={toogleTheme}
     />
   );
